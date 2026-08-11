@@ -1,0 +1,52 @@
+# 安全示例配置：不包含账号、密码、令牌或真实个人画像。
+fetch:
+  initial_lookback_hours: 24
+  page_size: 25
+  comment_limit: 20
+  comment_page_size: 50
+  request_interval_seconds: 1.0
+
+filters:
+  min_score: 0
+  include_unmatched_hot_posts: true
+  blocked_keywords: [广告, 引流, 代写]
+  categories:
+    学业课程:
+      weight: 2.8
+      keywords: [课程, 选课, 课评, 作业, 考试, 学习]
+    科研升学:
+      weight: 2.6
+      keywords: [科研, 实验室, 导师, 论文, 保研, 留学, 交换, 暑研]
+    实习职业:
+      weight: 2.3
+      keywords: [实习, 招聘, 求职, 面试, offer, 内推, 简历]
+    校园通知:
+      weight: 2.2
+      keywords: [通知, 截止, 报名, 教务, 图书馆, 校医院, 宿舍, 食堂, 校车]
+    活动兴趣:
+      weight: 1.8
+      keywords: [讲座, 活动, 演出, 展览, 志愿, 比赛, 社团, 运动, 游戏]
+    资源技巧:
+      weight: 1.8
+      keywords: [求助, 经验, 资料, 攻略, 转让, 二手, 技巧, 教程, 工具, 避坑]
+
+deepseek:
+  base_url: https://api.deepseek.com
+  model: deepseek-v4-flash
+  batch_size: 40
+  minimum_relevance: 55
+  fallback_relevance: 45
+  high_relevance: 75
+  selection_ratio: 0.10
+  selection_flex_ratio: 0.03
+  selection_min_items: 10
+  selection_max_items: 300
+  thinking: disabled
+  prompt_context_file: 树洞页面观察与提示词.md
+
+profile:
+  path: ../个人画像.yaml
+
+output:
+  directory: ../每日报告
+  save_raw_feed: false
